@@ -28,3 +28,5 @@ modalClose.forEach((btn) => btn.addEventListener("click", CloseModal));
 function CloseModal() {
   modalbg.style.display = "none";
 }
+
+
