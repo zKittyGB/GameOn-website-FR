@@ -71,8 +71,6 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
-                  requiered
                 /><br>
                 <span class="error errorFirst"></span>
               </div>
@@ -110,6 +108,7 @@
                   name="birthdate"
                 /><br>
               </div>
+              <span class="error errorBirthdate"></span>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
@@ -194,11 +193,14 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
+                  name="chekbox1";
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
+                  <span class="error errorCondition"></span>
+
                 </label>
                 <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />

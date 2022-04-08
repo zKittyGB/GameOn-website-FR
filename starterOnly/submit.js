@@ -3,56 +3,65 @@ let validate = () =>{
     let first = document.forms["reserve"]["first"];
     let last = document.forms["reserve"]["last"];
     let email = document.forms["reserve"]["email"];
+    let birthdate = document.forms["reserve"]["birthdate"];
     let quantity = document.forms["reserve"]["quantity"];
     let location = document.forms["reserve"]["location"];
+    let condition = document.forms["reserve"]["checkbox1"];
     let errorFirst = document.querySelector('.errorFirst');
     let errorLast = document.querySelector('.errorLast');
     let errorEmail = document.querySelector('.errorEmail');
+    let errorBirthdate = document.querySelector('.errorBirthdate');
     let errorQuantity = document.querySelector('.errorQuantity');
     let errorLocation = document.querySelector('.errorLocation');
+    let errorCondition = document.querySelector('.errorCondition');
     
-    if (first.value === "")
+    // verification que le champs prénom ai un minimum de 2 caractères
+    if (first.value.length < 2)
     {
-      errorFirst.innerHTML="Champs obligatoire!";
+      errorFirst.innerHTML="Veuillez entrer 2 caractères ou plus pour le champ du prénom";
       return false;
     }
 
-    else if (first.value.length < 2)
-    {
-      errorFirst.innerHTML="Plus de deux caracètres obligatoire";
-      return false;
-    }
-
-    if (last.value === "")
-    {
-      errorLast.innerHTML="Champs obligatoire!";
-      return false;
-    }
-
+    // verification que le champs nom ai un minimum de 2 caractères
     else if (last.value.length < 2)
     {
-      errorLast.innerHTML="Plus de deux caracètres obligatoire";
+      errorLast.innerHTML="Veuillez entrer 2 caractères ou plus pour le champ du nom";
       return false;
     }
 
-    else if (email.value ==="")
+    // verification que le champs mail contienne un @ et un . 
+    else if (email.value.indexOf("@",0) <0  || email.value ==="" || email.value.indexOf(".", 0) < 0)
     {
-      errorEmail.innerHTML="Champs obligatoire!";
+      errorEmail.innerHTML="Veuillez entrer une adresse mail valide";
       return false;
     }
 
-    else if (email.value.indexOf("@",0) <0)
+    // verification qu'une date d'anniverssaire soit selectionné
+    else if (birthdate.value === "")
     {
-      errorEmail.innerHTML="Mettez une adresse mail valide!";
+      errorBirthdate.innerHTML="Vous devez entrer votre date de naissance";
       return false;
     }
-    else if (email.value.indexOf(".", 0) < 0)                 
-    { 
-      errorEmail.innerHTML="Mettez une adresse mail valide!";
-      return false; 
-    }   
 
-        
+     // verification qu'un nombre de tournoi participé soit rempli
+     else if (quantity.value === "")
+     {
+       errorQuantity.innerHTML="Vous devez entrer le nombre de tournoi auquel vous avez participé";
+       return false;
+     }
+    // verification qu'un tournoi soit selectionné
+    else if (location.value === "")
+    {
+      errorLocation.innerHTML="Vous devez  choisir une option";
+      return false;
+    }
 
+     // verification que la case Conditions d'utilisation soit valide
+     else if (condition.checked == false)
+     {
+       errorCondition.innerHTML="Vous devez vérifier que vous acceptez les termes et conditions";
+       return false;
+     }
+    alert("Merci ! Votre réservation a été reçue.")
     return true;
   }
