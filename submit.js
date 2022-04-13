@@ -1,6 +1,19 @@
+// Objet retour log
+class RetourValue {
+  constructor(first, last, email, birthdate, quantity, location, condition) {
+    this.first = first;
+    this.last = last;
+    this.email = email;
+    this.birthdate = birthdate;
+    this.quantity = quantity;
+    this.location = location;
+    this.condition = condition;    
+  }
+}
+
 
 // validation send form 
-let validate = () =>{
+let validate = (event) =>{
     let first = document.forms["reserve"]["first"];
     let last = document.forms["reserve"]["last"];
     let email = document.forms["reserve"]["email"];
@@ -16,8 +29,20 @@ let validate = () =>{
     let errorLocation = document.querySelector('.errorLocation');
     let errorCondition = document.querySelector('.errorCondition');  
     const regexMail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const retourLog = new RetourValue(
+      first.value,
+      last.value,
+      email.value,
+      birthdate.value,
+      quantity.value,
+      location.value,
+      condition.value
+    );
+
+  // cancel la redirection
+    event.preventDefault();
   
-    // Reset des champs error au clic submit
+   // Reset des champs error au clic submit
     errorFirst.innerHTML="";
     errorLast.innerHTML="";
     errorEmail.innerHTML="";
@@ -67,6 +92,6 @@ let validate = () =>{
        errorCondition.innerHTML="Vous devez vérifier que vous acceptez les termes et conditions";
        return false;
      }
-    alert("Merci ! Votre réservation a été reçue.")
+    console.log(retourLog);
     return true;
   }
