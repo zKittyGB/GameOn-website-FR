@@ -1,4 +1,4 @@
-// Objet retour log
+// Objet verification values des inputs
 class RetourValue {
   constructor(first, last, email, birthdate, quantity, location, condition) {
     this.first = first;
@@ -9,6 +9,23 @@ class RetourValue {
     this.location = location;
     this.condition = condition;    
   }
+}
+
+// cacher le contenu du modal au submit valide
+let displayModal = () =>{
+    let hiddenContent = document.querySelector('#hiddenContent');
+    let button = document.querySelector('.btn-submit');
+    let remerciements = document.querySelector('.remerciements');
+    hiddenContent.style.display = 'none';
+    remerciements.innerHTML="Merci pour</br> votre inscription";
+    remerciements.setAttribute( //Ajout d'un pannel de style
+      "style","margin-top : 285px; margin-bottom : 280px ; font-Size : 28px; font-weight : 400; text-align :center ;"
+    );
+    button.value ='Fermer';
+    button.addEventListener('click', event =>{ //Ajout de la fonction "fermer modal" sur btn submit
+      CloseModal();
+    })
+    console.log(button);
 }
 
 
@@ -93,5 +110,6 @@ let validate = (event) =>{
        return false;
      }
     console.log(retourLog);
+    displayModal();
     return true;
   }
