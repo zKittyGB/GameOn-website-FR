@@ -46,6 +46,7 @@ let validate = (event) =>{
     let errorLocation = document.querySelector('.errorLocation');
     let errorCondition = document.querySelector('.errorCondition');  
     const regexMail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    // création d'une instance de retourLog pour recuperer la valeur de chaque elements
     const retourLog = new RetourValue(
       first.value,
       last.value,
@@ -56,7 +57,7 @@ let validate = (event) =>{
       condition.value
     );
 
-  // cancel la redirection
+  // cancel la redirection au clic submit
     event.preventDefault();
   
    // Reset des champs error au clic submit
