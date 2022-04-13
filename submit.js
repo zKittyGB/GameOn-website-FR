@@ -25,7 +25,7 @@ let displayModal = () =>{
     button.addEventListener('click', event =>{ //Ajout de la fonction "fermer modal" sur btn submit
       CloseModal();
     })
-    console.log(button);
+    console.log(button.value);
 }
 
 
