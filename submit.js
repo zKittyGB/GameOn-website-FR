@@ -45,6 +45,7 @@ let validate = (event) =>{
     let errorQuantity = document.querySelector('.errorQuantity');
     let errorLocation = document.querySelector('.errorLocation');
     let errorCondition = document.querySelector('.errorCondition');  
+    let returnFalse = false;
     const regexMail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     // création d'une instance de retourLog pour recuperer la valeur de chaque elements
     const retourLog = new RetourValue(
@@ -69,48 +70,55 @@ let validate = (event) =>{
     errorLocation.innerHTML="";
     errorCondition.innerHTML="";
 
+
     // verification que le champs prénom ai un minimum de 2 caractères
     if (first.value.length < 2){
       errorFirst.innerHTML="Veuillez entrer 2 caractères ou plus pour le champ du prénom";
-      return false;
+      returnFalse = true;
     }
 
     // verification que le champs nom ai un minimum de 2 caractères
-    else if (last.value.length < 2){
+    if (last.value.length < 2){
       errorLast.innerHTML="Veuillez entrer 2 caractères ou plus pour le champ du nom";
-      return false;
+      returnFalse = true;
     }
 
     // verification que le champs mails soit valide
-    else if(!email.value.match(regexMail)){
+    if(!email.value.match(regexMail)){
       errorEmail.innerHTML="Veuillez entrer une adresse mail valide";
-      return false;
+      returnFalse = true;
     }
  
     // verification qu'une date d'anniverssaire soit selectionné
-    else if (birthdate.value === ""){
+    if (birthdate.value === ""){
       errorBirthdate.innerHTML="Vous devez entrer votre date de naissance";
-      return false;
+      returnFalse = true;
     }
 
      // verification qu'un nombre de tournoi participé soit rempli
-     else if (quantity.value === ""){
+     if (quantity.value === ""){
        errorQuantity.innerHTML="Vous devez entrer le nombre de tournoi auquel vous avez participé";
-       return false;
+       returnFalse = true;
      }
 
     // verification qu'un tournoi soit selectionné
-    else if (location.value === ""){
+    if (location.value === ""){
       errorLocation.innerHTML="Vous devez  choisir une option";
-      return false;
+      returnFalse = true;
     }
 
      // verification que la case Conditions d'utilisation soit valide
-     else if (condition.checked == false){
+     if (condition.checked == false){
        errorCondition.innerHTML="Vous devez vérifier que vous acceptez les termes et conditions";
+       returnFalse = true;
+     }
+     else if (returnFalse = true)
+     {
        return false;
      }
+     else{
     console.log(retourLog);
     displayModal();
     return true;
+     }
   }
