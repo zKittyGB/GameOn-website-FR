@@ -112,13 +112,13 @@ let validate = (event) =>{
        errorCondition.innerHTML="Vous devez vérifier que vous acceptez les termes et conditions";
        returnFalse = true;
      }
-     else if (returnFalse = true)
+     if (returnFalse == true)
      {
        return false;
      }
-     else{
+     
     console.log(retourLog);
     displayModal();
     return true;
-     }
+     
   }
